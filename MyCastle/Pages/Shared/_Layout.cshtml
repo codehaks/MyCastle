@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/rtl/bootstrap-rtl.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="mb-3 navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark border-bottom box-shadow">
+        <div class="container">
+            <a class="navbar-brand" asp-page="/index">MyIdentity</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <partial name="_LoginPartial" />
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top:20px">
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/vue/vue.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
