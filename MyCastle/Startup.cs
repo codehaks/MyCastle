@@ -39,7 +39,12 @@ namespace MyCastle
                 options.Cookie.Expiration = TimeSpan.FromDays(2);
             });
 
-            services.AddMvc();
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeAreaPage("user","/");
+                //options.Conventions.AuthorizeAreaPage("user", "/Edit");
+                //options.Conventions.AuthorizeAreaPage("user", "/Profile");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

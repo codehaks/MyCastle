@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,6 +12,7 @@ using MyCastle.Models;
 namespace MyCastle.Areas.User.Pages
 {
     [BindProperties]
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;

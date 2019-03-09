@@ -9,8 +9,8 @@ using MyCastle.Data;
 namespace MyCastle.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190309181311_UserInfo")]
-    partial class UserInfo
+    [Migration("20190309194812_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -183,6 +183,26 @@ namespace MyCastle.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("MyCastle.Models.Bug", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("Summary")
+                        .IsRequired();
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Bugs");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -226,6 +246,13 @@ namespace MyCastle.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MyCastle.Models.Bug", b =>
+                {
+                    b.HasOne("MyCastle.Models.ApplicationUser", "User")
+                        .WithMany("Bugs")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

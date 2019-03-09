@@ -16,5 +16,8 @@ namespace MyCastle.Models
         public string Summary { get; set; }
         public DateTime TimeCreated => DateTime.Now;
 
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
     }
 }

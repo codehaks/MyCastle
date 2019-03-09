@@ -192,7 +192,11 @@ namespace MyCastle.Migrations
                     b.Property<string>("Summary")
                         .IsRequired();
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Bugs");
                 });
@@ -240,6 +244,13 @@ namespace MyCastle.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MyCastle.Models.Bug", b =>
+                {
+                    b.HasOne("MyCastle.Models.ApplicationUser", "User")
+                        .WithMany("Bugs")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MyApp.Common;
 using MyCastle.Data;
 using MyCastle.Models;
 
@@ -19,10 +21,7 @@ namespace MyCastle.Areas.User.Pages.Bugs
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            Bug.UserId = User.GetUserId();
             _db.Bugs.Add(Bug);
             _db.SaveChanges();
 
