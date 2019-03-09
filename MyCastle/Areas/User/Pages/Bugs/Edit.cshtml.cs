@@ -24,12 +24,9 @@ namespace MyCastle.Areas.User.Pages.Bugs
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
+          
             _db.Bugs.Attach(Bug);
+            _db.Entry(Bug).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _db.SaveChanges();
 
             return RedirectToPage("./index");
