@@ -1,19 +1,18 @@
-﻿using BugPages.Common;
-using BugPages.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MyCastle.Data;
+using MyCastle.Models;
 using System.Collections.Generic;
 
-namespace BugPages.Pages
+namespace MyCastle.Areas.User.Pages.Bugs
 {
     public class IndexModel : PageModel
     {
         public IEnumerable<Bug> Bugs { get; set; }
-        public void OnGet([FromServices]LiteDbContext db)
+        public void OnGet([FromServices]AppDbContext db)
         {
 
-            var bugs = db.Context.GetCollection<Bug>();
-            Bugs = bugs.FindAll();
+            Bugs = db.Bugs;
 
         }
     }

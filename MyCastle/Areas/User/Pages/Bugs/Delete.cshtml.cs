@@ -1,35 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BugPages.Models;
-using LiteDB;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MyCastle.Data;
+using MyCastle.Models;
 
-namespace BugPages.Pages
+namespace MyCastle.Areas.User.Pages.Bugs
 {
     public class DeleteModel : PageModel
     {
-        [BindProperty]
+        private readonly AppDbContext _db;
+
+        public DeleteModel(AppDbContext db)
+        {
+            _db = db;
+        }
+
+        
         public Bug Bug { get; set; }
 
         public void OnGet(int id)
         {
-            using (var db = new LiteDatabase(@"bug.db"))
-            {
-                Bug = db.GetCollection<Bug>().FindById(id);
-            }
+            Bug = _db.Bugs.Find(id);
         }
+
+        [BindProperty]
+        public int Id { get; set; }
 
         public IActionResult OnPost()
         {
-            using (var db = new LiteDatabase(@"bug.db"))
-            {
-                var bugs = db.GetCollection<Bug>();
-                bugs.Delete(Bug.Id);
+            var bug = _db.Bugs.Find(Id);
 
-            }
+            _db.Bugs.Remove(bug);
+            _db.SaveChanges();
+
             return RedirectToPage("./index");
 
         }

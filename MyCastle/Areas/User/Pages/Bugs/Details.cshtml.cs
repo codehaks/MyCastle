@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BugPages.Models;
-using LiteDB;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using MyCastle.Data;
+using MyCastle.Models;
 
-namespace BugPages.Pages
+namespace MyCastle.Areas.User.Pages.Bugs
 {
     public class DetailsModel : PageModel
     {
+        private readonly AppDbContext _db;
 
-      
+        public DetailsModel(AppDbContext db)
+        {
+            _db = db;
+        }
+
         public Bug Bug { get; set; }
 
         public void OnGet(int id)
         {
-            using (var db = new LiteDatabase(@"bug.db"))
-            {
-                Bug = db.GetCollection<Bug>().FindById(id);
-            }
+            Bug = _db.Bugs.Find(id);
         }
     }
 }

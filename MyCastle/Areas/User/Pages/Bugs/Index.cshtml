@@ -43,9 +43,9 @@
                 <td>@bug.Name</td>
                 <td>@bug.Summary</td>
                 <td>
-                    <a asp-page="details" asp-route-id="@bug.Id" class="btn btn-default">Details</a>
-                    <a asp-page="delete" asp-route-id="@bug.Id" class="btn btn-danger">Delete</a>
-                    <a asp-page="edit" asp-route-id="@bug.Id" class="btn btn-primary">Edit</a>
+                    <a asp-page="./bugs/details" asp-area="user" asp-route-id="@bug.Id" class="btn btn-default">Details</a>
+                    <a asp-page="./bugs/delete" asp-area="user" asp-route-id="@bug.Id" class="btn btn-danger">Delete</a>
+                    <a asp-page="./bugs/edit" asp-area="user" asp-route-id="@bug.Id" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
             i++;

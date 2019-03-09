@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BugPages.Common;
-using BugPages.Models;
-using LiteDB;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MyCastle.Data;
+using MyCastle.Models;
 
-namespace BugPages.Pages
+namespace MyCastle.Areas.User.Pages.Bugs
 {
     public class CreateModel : PageModel
     {
         [BindProperty]
         public Bug Bug { get; set; }
 
-        private readonly LiteDbContext _db;
+        private readonly AppDbContext _db;
 
-        public CreateModel(LiteDbContext db)
+        public CreateModel(AppDbContext db)
         {
             _db = db;
         }
@@ -28,8 +23,8 @@ namespace BugPages.Pages
             {
                 return Page();
             }
-            var bugs = _db.Context.GetCollection<Bug>();
-            bugs.Insert(Bug);
+            _db.Bugs.Add(Bug);
+            _db.SaveChanges();
 
             TempData["message"] = $"New bug created : {Bug.Name}";
 

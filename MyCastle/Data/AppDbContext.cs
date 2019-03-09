@@ -11,6 +11,8 @@ namespace MyCastle.Data
         {
         }
 
+        public DbSet<Bug> Bugs { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
