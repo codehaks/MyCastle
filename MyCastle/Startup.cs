@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MyCastle.Data;
+using MyCastle.Models;
 
 namespace MyCastle
 {
@@ -20,7 +21,7 @@ namespace MyCastle
             services.AddDbContext<AppDbContext>(options =>
                options.UseSqlite("Data Source=app.sqlite"));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
             services.Configure<IdentityOptions>(options =>

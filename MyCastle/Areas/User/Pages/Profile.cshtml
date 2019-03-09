@@ -1,0 +1,21 @@
+﻿@page
+@model MyCastle.Areas.User.Pages.ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Profile</h1>
+<hr />
+
+<strong>@Model.AppUser.UserName</strong>
+<p>
+    FirstName : @Model.AppUser.FirstName
+</p>
+<p>
+    FirstName : @Model.AppUser.LastName
+</p>
+<p>
+    Email : @Model.AppUser.Email
+</p>
+
+
