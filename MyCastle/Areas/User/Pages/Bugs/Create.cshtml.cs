@@ -23,9 +23,9 @@ namespace MyCastle.Areas.User.Pages.Bugs
 
         public IActionResult OnPost()
         {
-            //Bug.UserId = User.GetUserId();
+            Bug.UserId = User.GetUserId();
             _db.Bugs.Add(Bug);
-            //_db.SaveChanges();
+            _db.SaveChanges();
 
             TempData["message"] = $"New bug created : {Bug.Name}";
 
