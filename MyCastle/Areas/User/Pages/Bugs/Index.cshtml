@@ -4,31 +4,21 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Home";var i = 1;
 }
 
-<h2>Bugs</h2>
-<hr />
-
-@{
-    var i = 1;
-}
-
-<h2>Bug Pages</h2>
-<hr>
-
+<h2>My Bugs</h2>
 @if (TempData["message"] != null)
 {
     <div class="alert alert-info" role="alert">@TempData["message"]</div>
 }
 
-<a asp-page="create" class="btn btn-success">Create new</a>
+<a asp-page="create" class="btn btn-success my-3">Create new</a>
 
 <table class="table table-hover">
     <thead>
         <tr>
             <th>#</th>
-            <td>Id</td>
             <th>Name</th>
             <th>Desc</th>
             <th></th>
@@ -39,7 +29,6 @@
         {
             <tr>
                 <td>@i</td>
-                <td>@bug.Id</td>
                 <td>@bug.Name</td>
                 <td>@bug.Summary</td>
                 <td>
