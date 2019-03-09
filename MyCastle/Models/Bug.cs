@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyCastle.Models
 {
-    public class Bug
+    public class Bug:IUserInfo
     {
         public int Id { get; set; }
         [Required]

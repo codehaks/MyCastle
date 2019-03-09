@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyApp.Common;
+using MyCastle.Common;
 using MyCastle.Data;
 using MyCastle.Models;
 
 namespace MyCastle.Areas.User.Pages.Bugs
 {
+    [UserInfo]
     public class CreateModel : PageModel
     {
         [BindProperty]
@@ -21,9 +23,9 @@ namespace MyCastle.Areas.User.Pages.Bugs
 
         public IActionResult OnPost()
         {
-            Bug.UserId = User.GetUserId();
+            //Bug.UserId = User.GetUserId();
             _db.Bugs.Add(Bug);
-            _db.SaveChanges();
+            //_db.SaveChanges();
 
             TempData["message"] = $"New bug created : {Bug.Name}";
 
