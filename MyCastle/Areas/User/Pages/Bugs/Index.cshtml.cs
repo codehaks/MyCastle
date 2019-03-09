@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MyApp.Common;
 using MyCastle.Data;
 using MyCastle.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyCastle.Areas.User.Pages.Bugs
 {
@@ -14,7 +16,7 @@ namespace MyCastle.Areas.User.Pages.Bugs
         public void OnGet([FromServices]AppDbContext db)
         {
 
-            Bugs = db.Bugs;
+            Bugs = db.Bugs.Where(b=>b.UserId==User.GetUserId());
 
         }
     }

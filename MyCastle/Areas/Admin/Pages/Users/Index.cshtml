@@ -1,0 +1,42 @@
+﻿@page
+@model MyCastle.Areas.Admin.Pages.Users.IndexModel
+@{
+    var i = 1;
+}
+
+<table id="usertable" class="table table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+
+            <th>
+                UserName
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+
+            <tr>
+                <td>
+                    @i
+                </td>
+
+                <td>
+                    @item.UserName
+                </td>
+                <td>
+                    <a asp-page="edit" asp-route-userid="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-page="details" asp-route-userid="@item.Id" class="btn btn-primary btn-sm">Details</a>
+                </td>
+            </tr>
+
+            i++;
+        }
+    </tbody>
+</table>
