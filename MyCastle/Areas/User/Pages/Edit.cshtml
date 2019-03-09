@@ -1,0 +1,19 @@
+﻿@page
+@model MyCastle.Areas.User.Pages.EditModel
+@{
+}
+
+<h1>
+    Edit
+</h1>
+<hr />
+<form method="post" asp-action="Edit" asp-controller="home">
+
+    <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+    <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+    <input asp-for="Email" class="form-control" placeholder="Email" />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<a asp-page="./Index" class="btn btn-link">Back to list</a>
