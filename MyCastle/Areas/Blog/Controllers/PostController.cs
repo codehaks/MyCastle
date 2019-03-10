@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyCastle.Areas.Blog.Controllers
 {
+    [Area("Blog")]
     public class PostController : Controller
     {
         public IActionResult Index()
@@ -19,7 +20,7 @@ namespace MyCastle.Areas.Blog.Controllers
             return Ok("Create");
         }
 
-        [Authorize(policy:"TehranOnly")]
+        [Authorize(policy: "TehranOnly")]
         public IActionResult Capital()
         {
             return Ok("Create");

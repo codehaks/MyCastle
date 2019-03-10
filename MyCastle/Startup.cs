@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MyCastle.Common;
 using MyCastle.Data;
 using MyCastle.Models;
 
@@ -42,12 +43,17 @@ namespace MyCastle
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
-                options.AddPolicy("TehranOnly", policy => policy.RequireClaim("City","Tehran"));
+                options.AddPolicy("TehranOnly", policy => policy.RequireClaim("City", "Tehran"));
+                options.AddPolicy("Adult", policy =>
+                {
+                    //policy.RequireClaim("City", "Tehran");
+                    policy.Requirements.Add(new MinumumAgeRequirement(21));
+                });
             });
 
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AuthorizeAreaFolder("user","/");
+                options.Conventions.AuthorizeAreaFolder("user", "/");
                 //options.Conventions.AuthorizeAreaPage("user", "/Edit");
                 //options.Conventions.AuthorizeAreaPage("user", "/Profile");
 
@@ -63,7 +69,17 @@ namespace MyCastle
             }
             app.UseStaticFiles();
             app.UseAuthentication();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
+              name: "default",
+              template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

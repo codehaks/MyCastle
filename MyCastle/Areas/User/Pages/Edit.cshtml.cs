@@ -25,6 +25,7 @@ namespace MyCastle.Areas.User.Pages
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public int Age { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
@@ -33,7 +34,7 @@ namespace MyCastle.Areas.User.Pages
             FirstName = user.FirstName;
             LastName = user.LastName;
             Email = user.Email;
-
+            Age = user.Age;
             return Page();
         }
 
@@ -44,7 +45,7 @@ namespace MyCastle.Areas.User.Pages
             AppUser.FirstName = FirstName;
             AppUser.LastName = LastName;
             AppUser.Email = Email;
-
+            AppUser.Age = Age;
             await _userManager.UpdateAsync(AppUser);
             return RedirectToPage("./index");
         }
