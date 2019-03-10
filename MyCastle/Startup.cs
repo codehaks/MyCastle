@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +32,7 @@ namespace MyCastle
                 //options.Password.RequiredUniqueChars = 0;
                 //options.Password.RequiredLength = 6;
                 //options.SignIn.RequireConfirmedEmail = false;
-                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(3);     
+                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(3);  
             });
 
             services.Configure<CookieAuthenticationOptions>(options =>
@@ -50,6 +51,8 @@ namespace MyCastle
                     policy.Requirements.Add(new MinumumAgeRequirement(21));
                 });
             });
+
+            services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
 
             services.AddMvc().AddRazorPagesOptions(options =>
             {

@@ -25,5 +25,11 @@ namespace MyCastle.Areas.Blog.Controllers
         {
             return Ok("Create");
         }
+
+        [Authorize(policy: "Adult")]
+        public IActionResult Adult()
+        {
+            return Ok("Adult content");
+        }
     }
 }
