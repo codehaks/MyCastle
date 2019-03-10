@@ -42,6 +42,7 @@ namespace MyCastle
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
+                options.AddPolicy("TehranOnly", policy => policy.RequireClaim("City","Tehran"));
             });
 
             services.AddMvc().AddRazorPagesOptions(options =>
@@ -50,7 +51,7 @@ namespace MyCastle
                 //options.Conventions.AuthorizeAreaPage("user", "/Edit");
                 //options.Conventions.AuthorizeAreaPage("user", "/Profile");
 
-                options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
+                //options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
             });
         }
 
