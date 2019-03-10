@@ -1,0 +1,18 @@
+﻿@page
+@model MyCastle.Areas.Admin.Pages.Users.ClaimModel
+@{
+}
+
+<h2>Create</h2>
+<hr />
+
+<form method="post">
+    <input hidden asp-for="UserId" />
+    <input asp-for="Type" placeholder="Type" class="form-control" />
+    <br>
+    <input asp-for="Value" placeholder="Value" class="form-control" />
+    <br>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="index" class="btn btn-link">Back to list</a>
+
+</form>
