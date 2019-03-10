@@ -39,11 +39,18 @@ namespace MyCastle
                 options.Cookie.Expiration = TimeSpan.FromDays(2);
             });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
+            });
+
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AuthorizeAreaPage("user","/");
+                options.Conventions.AuthorizeAreaFolder("user","/");
                 //options.Conventions.AuthorizeAreaPage("user", "/Edit");
                 //options.Conventions.AuthorizeAreaPage("user", "/Profile");
+
+                options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
             });
         }
 
