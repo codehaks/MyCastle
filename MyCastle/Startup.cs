@@ -52,7 +52,8 @@ namespace MyCastle
                 });
             });
 
-            services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
+            //services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
+            services.AddScoped<IAuthorizationHandler, MinimumAgeHandler>();
 
             services.AddMvc().AddRazorPagesOptions(options =>
             {
