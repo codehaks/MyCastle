@@ -61,7 +61,7 @@ namespace MyCastle
                 //options.Conventions.AuthorizeAreaPage("user", "/Edit");
                 //options.Conventions.AuthorizeAreaPage("user", "/Profile");
 
-                //options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
+                options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
             });
         }
 
