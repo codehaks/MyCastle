@@ -17,7 +17,7 @@ namespace MyCastle.Controllers
         }
 
         [Route("/api/check/admin")]
-        [Authorize()]
+        [Authorize(Roles ="admin")]
         public IActionResult Admin()
         {
             return Ok("Admin Approved!");
