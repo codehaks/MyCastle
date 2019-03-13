@@ -15,5 +15,14 @@ namespace MyCastle.Controllers
         {
             return Ok("Approved!");
         }
+
+        [Route("/api/check/admin")]
+        [Authorize()]
+        public IActionResult Admin()
+        {
+            return Ok("Admin Approved!");
+        }
+
+
     }
 }

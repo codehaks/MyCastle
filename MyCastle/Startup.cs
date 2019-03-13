@@ -44,9 +44,9 @@ namespace MyCastle
             services
                 .AddAuthentication(options =>
                 {
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    //options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    //options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                    //options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
                 .AddJwtBearer(cfg =>
                 {
@@ -100,7 +100,7 @@ namespace MyCastle
                 //options.Conventions.AuthorizeAreaPage("user", "/Edit");
                 //options.Conventions.AuthorizeAreaPage("user", "/Profile");
 
-                //options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
+                options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
             });
         }
 

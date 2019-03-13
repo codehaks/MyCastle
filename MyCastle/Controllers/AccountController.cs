@@ -37,7 +37,7 @@ namespace MyCastle.Controllers
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(username);
-                var token = Generate(user);
+                var token = GenerateJasonWebToken(user);
                 return Ok(token);
             }
             else
@@ -53,12 +53,12 @@ namespace MyCastle.Controllers
         }
 
 
-        public string Generate(ApplicationUser user)
+        public string GenerateJasonWebToken(ApplicationUser user)
         {
-            var secretKey = Encoding.UTF8.GetBytes(Configuration["BearerTokens:Key"]); // longer that 16 character
+            var secretKey = Encoding.UTF8.GetBytes(Configuration["BearerTokens:Key"]); 
             var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKey), SecurityAlgorithms.HmacSha256Signature);
 
-            var claims = _getClaims(user);
+            var claims = GetUserClaims(user);
 
             var descriptor = new SecurityTokenDescriptor
             {
@@ -71,9 +71,9 @@ namespace MyCastle.Controllers
                 Subject = new ClaimsIdentity(claims)
             };
 
-            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-            //JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
-            //JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
+            JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -84,9 +84,8 @@ namespace MyCastle.Controllers
             return jwt;
         }
 
-        private IEnumerable<Claim> _getClaims(ApplicationUser user)
+        private IEnumerable<Claim> GetUserClaims(ApplicationUser user)
         {
-            //JwtRegisteredClaimNames.Sub
             var securityStampClaimType = new ClaimsIdentityOptions().SecurityStampClaimType;
 
             var list = new List<Claim>
