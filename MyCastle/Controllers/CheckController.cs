@@ -13,7 +13,7 @@ namespace MyCastle.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return Ok("Approved!");
+            return Ok("Approved 22!");
         }
 
         [Route("/api/check/admin")]

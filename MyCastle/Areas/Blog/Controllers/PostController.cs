@@ -17,6 +17,7 @@ namespace MyCastle.Areas.Blog.Controllers
 
         public IActionResult Create()
         {
+
             return Ok("Create");
         }
 

@@ -47,9 +47,9 @@ namespace MyCastle
             services
                 .AddAuthentication(options =>
                 {
-                    //options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                    //options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
-                    //options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
                 .AddJwtBearer(cfg =>
                 {
