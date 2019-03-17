@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28705.295
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCastle", "MyCastle\MyCastle.csproj", "{785FF48F-A2C3-440A-9CBE-A514E12917C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCastle", "MyCastle\MyCastle.csproj", "{785FF48F-A2C3-440A-9CBE-A514E12917C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinApp", "WinApp\WinApp.csproj", "{4E849C8A-F4B9-47D1-80E4-A62E68DFB57F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{785FF48F-A2C3-440A-9CBE-A514E12917C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{785FF48F-A2C3-440A-9CBE-A514E12917C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{785FF48F-A2C3-440A-9CBE-A514E12917C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E849C8A-F4B9-47D1-80E4-A62E68DFB57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E849C8A-F4B9-47D1-80E4-A62E68DFB57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E849C8A-F4B9-47D1-80E4-A62E68DFB57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E849C8A-F4B9-47D1-80E4-A62E68DFB57F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
