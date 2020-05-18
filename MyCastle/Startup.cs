@@ -50,6 +50,7 @@ namespace MyCastle
                 options.AddPolicy("TehranOnly", policy => policy.RequireClaim("City", "Tehran"));
                 options.AddPolicy("Adult", policy =>
                 {
+                    //policy.RequireRole("Admin");
                     //policy.RequireClaim("City", "Tehran");
                     policy.Requirements.Add(new MinumumAgeRequirement(21));
                 });

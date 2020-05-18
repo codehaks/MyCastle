@@ -18,9 +18,12 @@ namespace MyCastle.Common
         {
             _userManager = userManager;
         }
+
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context,
                                                        MinumumAgeRequirement requirement)
         {
+
+            
             var ageClaim=context.User.FindFirst("Age");
             var age = 1;
 
